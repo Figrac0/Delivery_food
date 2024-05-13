@@ -1,22 +1,33 @@
 .nav {
-    padding-top: 10px;
-    min-height: 120gigpx;
-    position: fixed;
+    padding-top: 11px;
     width: 100%;
-    height: 50px;
+    height: 120px;
     z-index: 5;
-    background-color: #d6d4d47e;
+    background-color: rgba(0, 0, 0, 0); 
+    
 }
 
 .nav__menu {
+    opacity: 1;
     border-radius: 30px;
     background-color: #ffffff;
     display: flex;
     justify-content: space-between;
-    padding: 13px 70px;
+    padding: 19px 60px;
     margin: 0;
     list-style: none;
-    
+
+}
+.nav__menu.scrolled {
+    border: 1px solid #000; /* Граница для меню при фиксированном nav */
+    padding: 10px 30px;
+    padding-top: 10px;
+   
+}
+
+
+.nav__menu.scrolled .nav__icon {
+    order: 2; /* Изменяем порядок элемента, чтобы иконка была справа */
 }
 
 .nav__item {
@@ -45,12 +56,7 @@
     &:hover{
         text-decoration: none;
         color:$main-color;
-        transform: scale(1.2);
+        transform: scale(1.3);
     }
-}
-
-
-
-
-
-
+    
+    }

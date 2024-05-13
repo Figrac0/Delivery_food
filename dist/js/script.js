@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){  
   $('.carousel__inner').slick({
 
@@ -157,29 +159,103 @@ new WOW().init();
 });
 
 
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  const catalog = document.querySelector('.catalog');
+  const carouselSection = document.querySelector('.carousel');
+  const navHeight = nav.offsetHeight;
+  const scrollPosition = window.scrollY;
+
+  // Проверяем, проходит ли пользователь через nav
+  if (scrollPosition >= nav.offsetTop) {
+      // Если пользователь проходит через nav, задаем фиксированное положение для nav
+      nav.style.position = 'fixed';
+      nav.style.top = '0';
+      nav.classList.add('scrolled');
+      catalog.classList.add('scrolled');
+  } else {
+      // Если пользователь не проходит через nav, возвращаем нормальное положение для nav
+      nav.style.position = 'static';
+      nav.classList.remove('scrolled');
+      catalog.classList.remove('scrolled');
+  }
+
+  // Проверяем, достиг ли пользователь верхней границы секции с каруселью при скролле вверх
+  if (scrollPosition <= carouselSection.offsetTop + carouselSection.offsetHeight) {
+      // Если пользователь скроллит вверх и достиг верхней границы секции с каруселью, возвращаем нормальное положение для nav
+      nav.style.position = 'static';
+      nav.classList.remove('scrolled');
+      catalog.classList.remove('scrolled');
+  }
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  const navMenu = document.querySelector('.nav__menu');
+  const scrollPosition = window.scrollY;
+
+  if (scrollPosition >= nav.offsetTop) {
+      navMenu.classList.add('scrolled');
+  } else {
+      navMenu.classList.remove('scrolled');
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav__link');
+
+  navLinks.forEach((link, index) => {
+      link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const targetIndex = index; // Получаем индекс ссылки
+          const targetTab = document.querySelectorAll('.catalog__tab')[targetIndex];
+          const targetTabContent = document.querySelectorAll('.catalog__content')[targetIndex];
+
+          // Показываем выбранный таб и его содержимое
+          if (targetTab && targetTabContent) {
+              // Делаем активным выбранный таб
+              document.querySelectorAll('.catalog__tab').forEach(tab => {
+                  tab.classList.remove('catalog__tab__active');
+              });
+              targetTab.classList.add('catalog__tab__active');
+
+              // Показываем содержимое выбранного таба
+              document.querySelectorAll('.catalog__content').forEach(content => {
+                  content.classList.remove('catalog__content_active');
+              });
+              targetTabContent.classList.add('catalog__content_active');
+          }
+      });
+  });
+});
 
 
-//TINY-SLIDER
-// const slider = tns({
-//   container: '.carousel__inner',
-//   //  запускаем слайдер на нужном сайте 
-//   items: 1,
-//   slideBy: 'page',
-//   autoplay: true,
-//   controls: false,
-//   nav: false,
-//   autoplayButtonOutput: false,
-//   responsive: {
-//     // media
-//     900: {
-//       items: 1
-//     }
-//   }
-// });
-// document.querySelector('.prev').addEventListener( 'click', function () {
-//   slider.goTo('prev');
-// });
 
-// document.querySelector('.next').addEventListener( 'click', function () {
-//   slider.goTo('next');
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
