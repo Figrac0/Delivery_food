@@ -16,13 +16,17 @@
     padding: 19px 60px;
     margin: 0;
     list-style: none;
+    
 
 }
 .nav__menu.scrolled {
+    display: flex;
+    align-items:center;
     border: 1px solid #000; /* Граница для меню при фиксированном nav */
     padding: 10px 30px;
     padding-top: 10px;
-   
+
+    
 }
 
 

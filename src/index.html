@@ -1431,9 +1431,70 @@
              </div>  
                     
         </div>
+        <div class="catalog__cart">
+            <div class="cart__content">
+                <img  src="icons/basket.png" alt="Корзина" class="cart__image">
+                <p class="cart__text">Какой-нибудь текст, призывающий что-нибудь заказать</p>
+            </div>
+            <button class="button button_order">Заказать</button>
+        </div>
+            </div>
+        </div>
     </section>
 
+    <section id="counter" class="sales">
+        <div ><img class="sales__pizza sales__pizza1" src="icons/pizza-svgrepo-com.svg" alt="pizza"> <img class="sales__pizza sales__pizza2 " src="icons/pizza-cutter-svgrepo-com.svg" alt="pizza"></div>
+        <h2 class="sales__text">Заказов отправлено:</h2>
+        <p class="sales__num" id="count">15327</p>
+        <div ><img class="sales__delivery sales__pizza3 " src="icons/delivery-truck-urgent-svgrepo-com.svg" alt="Food_delivery"> <img class="sales__delivery sales__pizza4" src="icons/pizza-delivery-svgrepo-com.svg" alt="Food_delivery"></div>
+        
+    </section>
 
+    <section class="feed">
+        <div class="container">
+            <h2 class="title">отзывы клиентов</h2>
+            <div class="feed__item animate__animated animate__fadeInUp wow" data-wow-duration="1.2s" data-wow-delay="0.5s">
+                <img src="icons/photo_1.png" alt="Ирина Иванченко" class="feed__img">
+                <div class="feed__text">
+                    <div class="feed__subtitle">Ирина Иванченко</div>
+                    <div class="feed__count">2 заказа</div>
+                    <div class="feed__descr">Каждый раз, когда я заказываю у вас пиццу, это как погружение в волшебный мир вкусов и ароматов. Ваша доставка не просто приносит еду, она приносит радость и удовольствие. Спасибо вам за ваше превосходство в качестве и внимание к деталям. Вы действительно делаете мои вечера незабываемыми и волшебными
+                    <br><br>
+                    Просто вкуснятина!
+                    <br><br>  
+                    Спасибо, Kanagawa Pizza Place! 
+                    </div>
+                </div>
+            </div>
+            <div class="feed__item animate__animated animate__fadeInUp wow" data-wow-duration="1.2s" data-wow-delay="0.8s">
+                <img src="icons/photo_2.png" alt="Иван Сёмочкин" class="feed__img">
+                <div class="feed__text">
+                    <div class="feed__subtitle">Иван Сёмочкин</div>
+                    <div class="feed__count">1 заказ</div>
+                    <div class="feed__descr">Ваша доставка пиццы - просто спасение! С каждым заказом я получаю не только непревзойденный вкус пиццы, но и безукоризненный сервис доставки. Благодаря вам мои вечера наполняются удовольствием и наслаждением
+                    <br><br> 
+                    Кроме того, ваша оперативная и дружелюбная доставка всегда приходит точно вовремя, создавая комфортную атмосферу для ужина в уютном домашнем окружении.
+                    </div>
+                </div>
+            </div>
+            <div class="feed__item animate__animated animate__fadeInUp wow" data-wow-duration="1.2s" data-wow-delay="0.8s">
+                <img src="icons/photo_3.png" alt="Юлия Дашкина" class="feed__img">
+                <div class="feed__text">
+                    <div class="feed__subtitle">Юлия Дашкина</div>
+                    <div class="feed__count">5 заказов</div>
+                    <div class="feed__descr">Не перестаю удивляться вашей доставке пиццы! Отличный выбор ингредиентов, и каждый раз пицца приходит свежей и горячей, как только из печи. Вы делаете мои вечера незабываемыми и полными вкуса. Спасибо за ваше внимание к деталям и высокий уровень сервиса
+                    <br><br> 
+                    Я ценю ваше стремление к совершенству и профессионализм, который проявляется в каждом шаге доставки. Вы — настоящие мастера своего дела, и я рад, что могу наслаждаться вашими божественными пиццами каждый раз!
+                    <br><br> 
+                    Спасибо!!!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<section>
     <footer class="footer">
         <div class="footer__map">
             <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d793.5313928961549!2d37.64613329764718!3d55.76813036078372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a636edcd2ad%3A0x4c2ca101e2c8c617!2z0JzRj9GB0L3QuNGG0LrQuNC5INC_0YAt0LQsIDQvMywg0JzQvtGB0LrQstCwLCAxMDcwNzg!5e0!3m2!1sru!2sru!4v1709554274767!5m2!1sru!2sru" width="100%" height="630" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1452,40 +1513,9 @@
     <a href="#up" class="pageup">
         <img src="icons/up.svg" alt="UP" >
     </a>
+</section> 
 
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Функция для обработки изменения хэша
-            function handleHashChange() {
-                // Получаем хэш из URL
-                const hash = window.location.hash.substr(1);
-        
-                // Находим соответствующий таб в каталоге
-                const targetTab = document.getElementById(hash);
-        
-                // Если найден таб, делаем его активным, скрывая остальные табы
-                if (targetTab) {
-                    // Скрываем все табы
-                    const allTabs = document.querySelectorAll('.catalog__content');
-                    allTabs.forEach(tab => {
-                        tab.classList.remove('catalog__content_active');
-                    });
-        
-                    // Делаем целевой таб активным
-                    targetTab.classList.add('catalog__content_active');
-                }
-            }
-        
-            // Вызываем функцию обработки изменения хэша при загрузке страницы
-            handleHashChange();
-        
-            // Назначаем обработчик события hashchange
-            window.addEventListener('hashchange', handleHashChange);
-        });
-        </script>
-        
-        
+
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

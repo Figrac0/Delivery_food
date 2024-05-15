@@ -229,6 +229,115 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const cart = document.querySelector('.catalog__cart');
+  const catalog = document.querySelector('.catalog');
+  const catalogHeight = catalog.offsetHeight;
+  const cartHeight = cart.offsetHeight;
+  const catalogRect = catalog.getBoundingClientRect();
+  const catalogTop = catalogRect.top + window.scrollY;
+
+  function updateCartPosition() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      // Определяем верхнюю и нижнюю границы секции каталога
+      const catalogBottom = catalogTop + catalogHeight;
+
+      // Определяем, сколько пикселей корзина может опуститься вниз
+      const maxCartBottomOffset = 300; // Это значение можно настроить по вашему усмотрению
+
+      // Проверяем, находится ли верхняя граница корзины в пределах секции каталога
+      if (scrollTop >= catalogTop && scrollTop <= catalogBottom - cartHeight - maxCartBottomOffset) {
+          // Корзина находится в пределах секции, позиционируем ее относительно верхней границы секции
+          cart.style.top = `${scrollTop - catalogTop}px`;
+      } else if (scrollTop < catalogTop) {
+          // Корзина поднялась выше секции, фиксируем ее вверху секции
+          cart.style.top = '0';
+      } else {
+          // Корзина достигла нижней границы секции, фиксируем ее внизу секции
+          cart.style.top = `${catalogBottom - catalogTop - cartHeight - maxCartBottomOffset}px`;
+      }
+  }
+
+  window.addEventListener('scroll', updateCartPosition);
+  window.addEventListener('resize', updateCartPosition);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const buyButtons = document.querySelectorAll('.button_mini'); // Получаем все кнопки "КУПИТЬ"
+  const cartContent = document.querySelector('.cart__content'); // Получаем контейнер корзины
+  const orderButton = document.querySelector('.button_order'); // Получаем кнопку "Заказать"
+
+  // Функция для добавления кнопки "Заказать"
+  function addOrderButton() {
+      orderButton.style.display = 'block'; // Показываем кнопку "Заказать"
+  }
+
+  // Обработчик события для каждой кнопки "КУПИТЬ"
+  buyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+          const catalogItem = this.closest('.catalog-item'); // Находим ближайший элемент с классом .catalog-item
+          const itemImage = catalogItem.querySelector('.catalog-item__img').cloneNode(true); // Клонируем изображение товара
+          const itemName = catalogItem.querySelector('.catalog-item__subtitle').innerText; // Получаем название товара
+          const itemPrice = catalogItem.querySelector('.catalog-item__price').innerText; // Получаем цену товара
+
+          // Очищаем содержимое корзины
+          cartContent.innerHTML = '';
+
+          // Добавляем надпись "Корзина" над товаром
+          const cartLabel = document.createElement('p');
+          cartLabel.innerText = 'Корзина:';
+          cartContent.appendChild(cartLabel);
+
+          // Добавляем клон изображения товара в корзину
+          cartContent.appendChild(itemImage);
+
+          // Создаем элемент для отображения названия товара в корзине
+          const itemNameElement = document.createElement('p');
+          itemNameElement.innerText = itemName;
+          cartContent.appendChild(itemNameElement);
+
+          // Создаем элемент для отображения цены товара в корзине
+          const itemPriceElement = document.createElement('p');
+          itemPriceElement.innerText = itemPrice;
+          cartContent.appendChild(itemPriceElement);
+
+          // Добавляем кнопку "Заказать"
+          addOrderButton();
+      });
+  });
+
+  // Обработчик события для кнопки "Заказать"
+  orderButton.addEventListener('click', function() {
+      // Ваш код для обработки нажатия на кнопку "Заказать"
+  });
+});
+
+function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Функция для обновления счетчика
+    function updateCounter() {
+        var countElement = document.getElementById('count');
+        var currentCount = parseInt(countElement.textContent);
+        var increment = getRandomInt(1, 3);
+        countElement.textContent = currentCount + increment;
+    }
+
+    // Обновляем счетчик каждые 10 секунд
+    setInterval(updateCounter, 10000);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
